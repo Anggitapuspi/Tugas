@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pasarku.id</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: sans-serif;
+        }
+
+        .background {
+            background-image: url('img/awal.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .site-title {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 1em;
+            font-weight: bold;
+            color: white;
+            z-index: 10;
+        }
+
+        .navigation-right {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            display: flex;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        .nav-link {
+            font-size: 0.8em;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+            transform: translateY(-2px);
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgb(16, 108, 194); 
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px; 
+            font-size: 0.7em;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 150px; 
+            height: 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .bubble:hover {
+            background-color: rgb(16, 108, 194);
+            transform: translateY(-3px);
+        }
+
+        .second-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            font-size: 2em;
+            color: #333;
+        }
+
+        .header {
+            position: relative;
+            width: 90%;
+            max-width: 1200px; 
+            height: 90vh; 
+            border-radius: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            margin-top: -30px; 
+        }
+
+        .header img {
+            width: 100%;
+            height: 40%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .header-text {
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            border-radius: 10px;
+            width: 30%;
+        }
+
+        .header-text h2 {
+            margin: 0;
+            font-size: 1.5em; 
+            color: white;
+            margin-top: 15%
+        }
+
+        .header-text p {
+            margin: 3px 0 0;
+            font-size: 0.5em; 
+            color: #ffffff;
+            margin-top: 1%;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.5); /* Tambahkan ini */
+            padding: 10px;
+        }
+
+        .header-subtext {
+            font-family: 'Audiowide', cursive;
+            position: absolute;
+            bottom: 320px; 
+            left: 20px; 
+            font-size: 0.8em;
+            color: rgb(0, 0, 0);
+        }
+
+        .image-container {
+            position: absolute;
+            bottom: 50px; 
+            left: 17%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px; 
+        }
+
+        .image-container img {
+            width: 160px; 
+            height: 250px;
+            border-radius: 10px; 
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); 
+        }
+
+        .box-container {
+            position: absolute;
+            bottom: 40px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .box {
+            width: 370px;
+            height: 80px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            border-radius: 10px; 
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            gap: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+        }
+
+        .box img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .box span {
+            font-size: 0.8em;
+        }
+
+        .below-header-text {
+            font-family: 'Audiowide', cursive;
+            font-size: 0.8em;
+            margin-left: 37%;
+            text-align: left;
+            color: black
+        }
+
+        .search-box-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 80%;
+            max-width: 500px;
+            margin-left: 37%;
+            margin-top: 2%
+        }
+
+        .search-box:nth-child(1) { background: rgb(207,255,221); }
+        .search-box:nth-child(2) { background: rgb(219,231,254); }
+        .search-box:nth-child(3) { background: rgb(208,186,255); }
+        .search-box:nth-child(4) { background: rgb(208,158,254); }
+        .search-box:nth-child(5) { background: rgb(181,126,255); }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s;
+            width: 230px;
+            height: 25px;
+        }
+
+        .search-box:hover {
+            transform: scale(1.05);
+        }
+
+        .search-box img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .search-box span {
+            font-size: 16px;
+        }
+
+        .square-image-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-left: 65%;
+            margin-top: -22%;
+        }
+
+        .square-image-container img {
+            width: 130px;
+            height: 130px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .third-section, .fourth-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+        }
+
+        .third-section {
+            background-color: #e6f7ff;
+        }
+
+        .fourth-section {
+            background-color: #fff2e6;
+            
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 60%;
+            max-width: 600px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            text-align: center;
+            position: relative;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .gallery-container img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .gallery-container img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="site-title">Pasarku.id</div>
+        <div class="navigation-right">
+            <a href="#section2" class="nav-link">Beranda</a>
+            <a href="#section3" class="nav-link">Map</a>
+            <a href="#section4" class="nav-link">Galeri</a>
+        </div>
+        <a href="#section2" class="bubble">Read More</a>
+    </div>
+
+    <div id="section2" class="second-section">
+        <div class="header">
+            <img src="img/header.jpg" alt="Header Image">
+            <div class="header-text">
+                <p>Pasar adalah tempat bertemunya penjual dan pembeli untuk melakukan transaksi jual beli barang atau jasa. Dalam arti luas, pasar tidak selalu berbentuk fisik, tetapi mencakup semua mekanisme atau sistem yang memungkinkan terjadinya pertukaran antara penjual dan pembeli. Pasar berperan penting dalam kehidupan ekonomi masyarakat karena menjadi pusat distribusi barang dan jasa serta mencerminkan dinamika penawaran dan permintaan.</p>
+            </div>
+            <div class="header-subtext">Jenis Pasar>>></div>
+            <div class="image-container">
+                <img src="img/trad.JPG" alt="Gambar 1" onclick="showPopup('tradisional')">
+                <img src="img/mod.jpg" alt="Gambar 2" onclick="showPopup('modern')">
+            </div>
+            <div class="box-container">
+  <a href="https://finance.detik.com/berita-ekonomi-bisnis/d-7918443/viral-pedagang-pasar-keluhkan-15-pungutan-sehari-keamanan-hingga-kebersihan" target="_blank" style="text-decoration: none;">
+    <div class="box">
+      <img src="img/berita 1.jpeg" alt="Icon 1">
+      <span>Pedagang Keluhkan pungutan 15 kali sehari</span>
+    </div>
+  </a>
+
+  <a href="https://www.cnbcindonesia.com/news/20250603171738-7-638280/pasar-baru-dulu-ramai-sekarang-sepi-kayak-kuburan-ini-penampakannya" target="_blank" style="text-decoration: none;">
+    <div class="box">
+      <img src="img/berita 2.jpeg" alt="Icon 2">
+      <span>Pasar Baru, Dulu Ramai Sekarang sepi Kayak Kuburan</span>
+    </div>
+  </a>
+
+  <a href="https://economy.okezone.com/read/2025/05/28/11/3142652/mpstore-bersama-kementerian-umkm-dannbspikappi-resmikan-ai-agent-untuk-pasar-tradisional" target="_blank" style="text-decoration: none;">
+    <div class="box">
+      <img src="img/berita 3.jpeg" alt="Icon 3">
+      <span>Peresmian AI Agent untuk Pasar Tradisional</span>
+    </div>
+  </a>
+</div>
+
+            <div class="below-header-text">Cari>>></div>
+           <!-- Bagian Recent Searches yang sudah aktif -->
+<div class="search-box-container">
+    <a href="#section3" class="search-box" style="text-decoration: none; color: inherit;">
+        <img src="img/search.png" alt="Search">
+        <span>Peta Persebaran Pasar</span>
+    </a>
+    <a href="Pasar Tradisional.html" class="search-box" style="text-decoration: none; color: inherit;">
+        <img src="img/search.png" alt="Search">
+        <span>Pasar Tradisional</span>
+    </a>
+    <a href="Kelly-1.0.0/Kelly-1.0.0/resume.html" class="search-box" style="text-decoration: none; color: inherit;">
+        <img src="img/search.png" alt="Search">
+        <span>Pasar Modern</span>
+    </a>
+    <a href="Kelly-1.0.0/Kelly-1.0.0/resume.html" class="search-box" style="text-decoration: none; color: inherit;">
+        <img src="img/search.png" alt="Search">
+        <span>Analisis Sosial Ekonomi</span>
+    </a>
+    <a href="Kelly-1.0.0/Kelly-1.0.0/resume.html" class="search-box" style="text-decoration: none; color: inherit;">
+        <img src="img/search.png" alt="Search">
+        <span>Galeri</span>
+    </a>
+</div>
+        </div>
+    </div>
+
+    <div id="section3" class="third-section">
+        <h2>Persebaran Pasar</h2>
+       <iframe  style="border: none;" height="500" width="600" src="http://localhost:7080/mapstore/dashboard-embedded.html#/99"></iframe>
+    </div>
+
+    </div>
+
+    <div id="section4" class="fourth-section" style="flex-direction: column; align-items: flex-start; padding: 50px;">
+    <h2 style="margin-bottom: 20px;">Galeri</h2>
+    <div class="gallery-container">
+        <img src="img/pasar 1.jpg" alt="Pasar 1">
+        <img src="img/pasar 2.jpg" alt="Pasar 2">
+        <img src="img/pasar 3.jpg" alt="Pasar 3">
+        <img src="img/pasar 4.jpg" alt="Pasar 4">
+        <img src="img/pasar 5.jpg" alt="Pasar 5">
+        <img src="img/pasar 6.jpg" alt="Pasar 6">
+        <img src="img/pasar 7.jpg" alt="Pasar 7">
+        <img src="img/pasar 8.jpg" alt="Pasar 8">
+        <img src="img/pasar 9.jpg" alt="Pasar 9">
+        <img src="img/pasar 10.jpg" alt="Pasar 10">
+        <!-- Tambah lagi sesuai kebutuhan -->
+    </div>
+</div>
+
+
+    <div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close-button" onclick="closePopup()">&times;</span>
+        <h3 id="popup-title"></h3>
+        <p id="popup-description"></p>
+    </div>
+</div>
+<script>
+function showPopup(type) {
+    const popup = document.getElementById("popup");
+    const title = document.getElementById("popup-title");
+    const desc = document.getElementById("popup-description");
+
+    if (type === "tradisional") {
+        title.textContent = "Pasar Tradisional";
+        desc.textContent = "Pasar tradisional merupakan pusat kegiatan ekonomi masyarakat yang telah ada sejak zaman dahulu. Di tempat ini, terjadi interaksi langsung antara penjual dan pembeli dengan sistem tawar-menawar sebagai ciri khas utamanya. Barang-barang yang dijual di pasar tradisional umumnya berupa kebutuhan pokok sehari-hari seperti sayuran, buah-buahan, daging, ikan, rempah-rempah, serta berbagai produk lokal lainnya. Pasar tradisional tidak hanya berfungsi sebagai tempat jual beli, tetapi juga sebagai ruang sosial budaya di mana masyarakat saling berinteraksi, bertukar informasi, dan menjaga hubungan sosial. Selain itu, pasar ini juga menjadi wadah bagi pelaku usaha kecil dan mikro untuk mengembangkan usahanya, sehingga keberadaan pasar tradisional sangat penting dalam mendukung perekonomian lokal. Meskipun saat ini pasar modern semakin berkembang, pasar tradisional tetap memiliki tempat tersendiri di hati masyarakat karena nuansa keakrabannya, harga yang lebih terjangkau, dan keberagaman produk lokal yang ditawarkan.";
+    } else if (type === "modern") {
+        title.textContent = "Pasar Modern";
+        desc.textContent = "Pasar modern merupakan bentuk evolusi dari pasar tradisional yang menawarkan pengalaman berbelanja yang lebih terstruktur, nyaman, dan efisien. Ciri khas pasar modern adalah sistem harga tetap (tanpa tawar-menawar), penataan produk yang rapi, serta fasilitas yang mendukung kenyamanan konsumen seperti pendingin ruangan, area parkir luas, dan sistem pembayaran digital. Produk yang dijual di pasar modern meliputi kebutuhan sehari-hari, barang rumah tangga, pakaian, hingga produk impor, dengan standar kualitas dan kebersihan yang terjaga. Pasar modern seringkali berbentuk supermarket, minimarket, hingga pusat perbelanjaan besar (mall). Keberadaan pasar modern mencerminkan perubahan gaya hidup masyarakat yang semakin mengutamakan kenyamanan, kecepatan, dan kualitas layanan. Namun, di sisi lain, perkembangan pasar modern juga menimbulkan tantangan bagi pasar tradisional, terutama dalam hal persaingan dan daya tarik konsumen.";
+    }
+
+    popup.style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+</script>
+
+<footer style="text-align:center; padding: 20px; background: #222; color: #fff;">
+    © 2025 Pasarku.id | Dibuat dengan ❤️ oleh [Anggita Puspitaningrum | 23/522215/SV/23631]
+</footer>
+
+</body>
+</html>
